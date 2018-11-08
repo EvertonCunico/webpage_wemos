@@ -1,0 +1,24 @@
+<div class="col-md-6">
+  <h2> Leituras cadastradas</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="hidden">Id</th>
+        <th>Nome</th>
+        <th>Sensor 1</th>
+        <th>Sensor 2</th>
+        <th>Sensor 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leitura of leituras">
+        <td>{{leitura.nome}}</td>
+        <td>{{leitura.sensor1}}</td>
+        <td>{{leitura.sensor2}}</td>
+        <td>{{leitura.sensor3}}</td>
+        <td><button class="btn btn-danger" (click)="deleteLeitura(leitura)"> Deletar leitura</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
