@@ -1,10 +1,13 @@
-<div class="col-md-6">
+<div class="col-lg-12">
   <h2> Leituras cadastradas</h2>
-
+  <div class="form-group">
+    <button class="btn btn-success" (click)="getLeituras()">Atualizar</button><br>
+  </div>
+  <input [(ngModel)]="filtro" placeholder="Filtro" name="filtro" class="form-control" id="campoFiltro">
   <table class="table table-striped">
     <thead>
       <tr>
-        <th class="hidden">Id</th>
+        <th>ID</th>
         <th>Nome</th>
         <th>Sensor 1</th>
         <th>Sensor 2</th>
@@ -12,7 +15,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let leitura of leituras">
+      <tr *ngFor="let leitura of leituras | grdFilter: {id: filtro, nome:filtro, sensor1: filtro, sensor2: filtro, sensor3: filtro}">
+        <td>{{leitura.id}}</td>
         <td>{{leitura.nome}}</td>
         <td>{{leitura.sensor1}}</td>
         <td>{{leitura.sensor2}}</td>

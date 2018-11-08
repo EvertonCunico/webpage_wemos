@@ -13,10 +13,16 @@ export class LeituraComponent implements OnInit {
 
   leituras: Leitura[] = new Array<Leitura>();
 
+  filtro: string;
+
   constructor(private router: Router, private leituraService: LeituraService) { }
 
   ngOnInit() {
     this.getLeituras();
+  }
+
+  filterUser(leitura: Leitura) {
+    return leitura.nome.indexOf(this.filtro) > -1;
   }
 
   getLeituras() :void{
@@ -31,10 +37,11 @@ export class LeituraComponent implements OnInit {
   deleteLeitura(leitura: Leitura): void {
     this.leituraService.deleteLeitura(leitura)
       .subscribe( data => {
-        this.leituras = this.leituras.filter(u => u !== leitura);
         alert("Deletou com sucesso!");
         this.getLeituras();
-      })
+      }, error => {
+        this.getLeituras();
+      });
   };
 
 }

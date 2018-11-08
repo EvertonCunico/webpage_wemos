@@ -24,8 +24,8 @@ export class LeituraService {
   }
 
   public deleteLeitura(leitura) {
-    let url = `${environment.apiUrl}cliente-wemos/lixeiras/`;
-    return this.http.delete<Leitura>(url, leitura);
+    let url = `${environment.apiUrl}cliente-wemos/lixeiras/` + leitura.id;
+    return this.http.delete<any>(url, httpOptions);
   }
 
   public createLeitura(leitura) {
